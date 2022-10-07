@@ -1,0 +1,39 @@
+body {
+    font-family: "Lucida Console";
+}
+
+.title-container {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(112, 0, 181);
+    border-bottom-style: solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#example-topleft{
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    z-index: -1;
+    //padding: 10px;
+}
+
+#title {
+    font-size: 60px;
+    color: rgb(112, 0, 181);
+}
+
+.game {
+    background-color: forestgreen;
+    margin: auto;
+    margin-top: 30px;
+    width: 90%;
+    height: 500px;
+    border-style: solid;
+    border-color: rgb(112, 0, 181);
+    border-width: 5px;
+    padding: 10px;
+}
