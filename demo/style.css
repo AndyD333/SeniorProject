@@ -18,7 +18,7 @@ body {
     left: 0px;
     top: 10px;
     z-index: -1;
-    //padding: 10px;
+    padding: 10px;
 }
 
 #title {
@@ -26,12 +26,57 @@ body {
     color: rgb(112, 0, 181);
 }
 
+#favcolbutton {
+    background-color: #1017e0;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    left: 1px;
+    top: 6px;
+    z-index: -1;
+    height: 140px;
+    width: 140px;
+    padding: 10px 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a{
+    position: absolute;
+    display: block;
+    z-index: 1;
+    height: 140px;
+    width: 140px;
+    left: 0px;
+    top: 0px;
+}
+
+.favcolbutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+#nameInput{
+    background-color: #00ff00;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    width: 140px;
+    z-index: 2;
+    left: 20px;
+    top: 25px
+}
+
+
 .game {
     background-color: forestgreen;
     margin: auto;
     margin-top: 30px;
     width: 90%;
-    height: 500px;
+    height: 700px;
     border-style: solid;
     border-color: rgb(112, 0, 181);
     border-width: 5px;
