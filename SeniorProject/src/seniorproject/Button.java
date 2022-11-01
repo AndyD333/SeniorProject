@@ -3,6 +3,8 @@ package seniorproject;
 public class Button implements Source
 {
     private boolean powered;
+
+
     public Button()
     {
         powered = false;
@@ -22,5 +24,4 @@ public class Button implements Source
     {
         powered = !powered;
     }
-    
 }
