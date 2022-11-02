@@ -20,6 +20,13 @@ public class Gate implements Source, Destination
 	this.powered = false;
     }
     
+    public Gate(int a, Source s)
+    {
+        this.typeNumber = a;
+        this.sourceL = s;
+        this.sourceR = s;
+    }
+    
     public Gate(int a, Source l, Source r)
     {
         this.sourceL = l;
@@ -46,17 +53,16 @@ public class Gate implements Source, Destination
      
     public void updatePower()
     {
-  
-        if(this.typeNumber == 0)//OR GATE
+        if(this.typeNumber == 0)//AND GATE
         {
             if(this.sourceL.getPower() && this.sourceR.getPower())
             {
                 this.powered = true;
             }
         }
-        else if(this.typeNumber == 1)//AND GATE
+        else if(this.typeNumber == 1)//OR GATE
         {
-            if(this.sourceL.getPower() && this.sourceR.getPower())
+            if(this.sourceL.getPower() || this.sourceR.getPower())
             {
                 this.powered = true;
             }
@@ -82,23 +88,19 @@ public class Gate implements Source, Destination
                 this.powered = true;
             }
         }
-        if(this.sourceR.getPower() != this.sourceL.getPower())
+        else if(this.sourceR.getPower() != this.sourceL.getPower())
         {
             this.powered = true;
+        }
+        else
+        {
+            this.powered = false;
         }
     }
 
     public boolean getPower()
     {
         updatePower();
-        if(this.powered)
-        {
-            System.out.println("ON!");
-        }
-        else
-        {
-            System.out.println("OFF!");
-        }
 	return this.powered;
     }
 
