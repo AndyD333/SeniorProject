@@ -1,10 +1,8 @@
 package seniorproject;
 
-import java.applet.*;
-import java.awt.*;
 import stuff.Button;
 
-public class SeniorProject extends Applet
+public class runner
 {
     public static void main(String[] args)
     {
@@ -36,7 +34,7 @@ public class SeniorProject extends Applet
         System.out.println("a: " + orD.getPower());
         
         System.out.println("");
-        System.out.println("");*/
+        System.out.println("");
         
         Gate notA = new Gate(2, on);
         Gate notB = new Gate(2, off);
@@ -52,7 +50,7 @@ public class SeniorProject extends Applet
         System.out.println("combo: " + combination.getPower());
         
         Light l = new Light(combination);
-        System.out.println("light: " + l.getPower());
+        System.out.println("light: " + l.getPower());*/
     }
     
     public void paint(Graphics g)
