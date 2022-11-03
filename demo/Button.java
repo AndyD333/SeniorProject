@@ -1,5 +1,7 @@
 package seniorproject;
 
+import stuff.Source;
+
 public class Button implements Source
 {
     private boolean powered;

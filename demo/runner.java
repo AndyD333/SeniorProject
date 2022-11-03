@@ -1,12 +1,16 @@
 package seniorproject;
 
-public class SeniorProject
+import java.applet.*;
+import java.awt.*;
+import stuff.Button;
+
+public class SeniorProject extends Applet
 {
     public static void main(String[] args)
     {
         Button on = new Button(true);
         Button off = new Button(false);
-
+/*
         
         Gate andA = new Gate(0, on, on);
         Gate andB = new Gate(0, off, on);
@@ -32,7 +36,7 @@ public class SeniorProject
         System.out.println("a: " + orD.getPower());
         
         System.out.println("");
-        System.out.println("");
+        System.out.println("");*/
         
         Gate notA = new Gate(2, on);
         Gate notB = new Gate(2, off);
@@ -49,5 +53,10 @@ public class SeniorProject
         
         Light l = new Light(combination);
         System.out.println("light: " + l.getPower());
+    }
+    
+    public void paint(Graphics g)
+    {
+        g.drawString("Hello world", 50, 50);
     }
 }
