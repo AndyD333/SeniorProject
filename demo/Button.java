@@ -1,6 +1,4 @@
-package seniorproject;
-
-import stuff.Source;
+package stuff;
 
 public class Button implements Source
 {

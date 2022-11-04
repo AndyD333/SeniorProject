@@ -1,14 +1,23 @@
-package seniorproject;
+package stuff;
 
-import stuff.Button;
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;         
 
-public class runner
+
+public class runner extends JFrame
 {
     public static void main(String[] args)
     {
+        //Name Input?
+        //JOptionPane.showInputDialog("message", "default msg");
+        System.out.println("test 2");
+        JPanel p = new JPanel(new BorderLayout());
+        p.show();
+        
+        /*
         Button on = new Button(true);
         Button off = new Button(false);
-/*
         
         Gate andA = new Gate(0, on, on);
         Gate andB = new Gate(0, off, on);
@@ -51,10 +60,5 @@ public class runner
         
         Light l = new Light(combination);
         System.out.println("light: " + l.getPower());*/
-    }
-    
-    public void paint(Graphics g)
-    {
-        g.drawString("Hello world", 50, 50);
     }
 }

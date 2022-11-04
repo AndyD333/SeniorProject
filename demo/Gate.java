@@ -1,4 +1,4 @@
-package seniorproject;
+package stuff;
 
 public class Gate implements Source, Destination
 {
