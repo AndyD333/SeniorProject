@@ -15,6 +15,8 @@ public class gui
     private int width;
     
     //BUTTON BOOLEANS
+    //THE CUSTOM OBJECTS AREN'T WORKING, WITH JPANELS SO INSTEAD EVERYTHING WILL
+    //BE FULLY WRITTEN OUT WITH BOOLEANS ANDD INTS
     private boolean butLogic1;
     private boolean butLogic2;
     private boolean butLogic3;
