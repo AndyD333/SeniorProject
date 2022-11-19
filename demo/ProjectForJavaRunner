@@ -1,9 +1,496 @@
-package projectforjava;
+package seniorproject;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.lang.*;
 
-public class ProjectForJavaRunner
+public class SeniorProject
 {
+    
+     //FRAME VARS
+    private static JFrame frame;
+    private static int gameHeight;
+    private static int gameWidth;
+    private static Object[][] screen;
+    private static int gameRows;
+    private static int gameCols;
+    private static int boxHeight;
+    private static int boxWidth;
+    
+    private static int levelCount;
+    
+    
+    //BUTTON BOOLEANS
+    //THE CUSTOM OBJECTS AREN'T WORKING, WITH JPANELS SO INSTEAD EVERYTHING WILL
+    //BE FULLY WRITTEN OUT WITH BOOLEANS ANDD INTS
+    private static boolean butLogic1;
+    private static boolean butLogic2;
+    private static boolean butLogic3;
+    private static boolean butLogic4;
+    private static boolean gateLogic1;
+    private static boolean gateLogic2;
+    private static boolean gateLogic3;
+    private static int gateType1;
+    private static int gateType2;
+    private static int gateType3;
+    
+    //BUTTON OBJECTS
+    private static JButton but1;
+    private static JButton but2;
+    private static JButton but3;
+    private static JButton but4;
+    private static JLabel gate1;
+    private static JLabel gate2;
+    private static JLabel gate3;
+    private static JLabel levelDisplay;
+    
+    
     public static void main(String[] args)
     {
-        gui game = new gui(800, 800);
+        //INITIALIZE VARS
+        frame = new JFrame();
+        butLogic1 = false;
+        butLogic2 = false;
+        butLogic3 = false;
+        butLogic4 = false;
+        gateLogic1 = false;
+        gateLogic2 = false;
+        gateLogic3 = false;
+        gateType1 = 0;
+        gateType2 = 0;
+        gateType3 = 0;
+        
+        levelCount = 1;
+        
+        gate1 = new JLabel();
+        gate2 = new JLabel();
+        gate3 = new JLabel();
+        
+        gameRows = 9;
+        gameCols = 9;
+
+        boxHeight = 50;
+        boxWidth = 50;
+        
+        gameHeight = gameRows * boxHeight;
+        gameWidth = gameCols * boxWidth;      
+        
+        Object screen[][] = new Object[gameRows][gameCols];
+
+        frame.setSize(new Dimension(700, 700));
+        frame.setLayout(new GridLayout(gameRows, gameCols));
+        
+        //BUTTONS TO FRAME
+        
+        but1 = new JButton();
+        but2 = new JButton();
+        but3 = new JButton();
+        but4 = new JButton();
+        updatePowers();
+   
+
+        //FILL FRAME
+        for(int i = 0; i < gameRows; i++)
+        {
+            for (int j = 0; j < gameCols; j++)
+            {
+                JLabel label = new JLabel(i + "," + j);
+                label.setPreferredSize(new Dimension(50, 50));
+                if(i == 0 && j == 0)
+                {
+                    levelDisplay = new JLabel("Level: " + levelCount);
+                    frame.add(levelDisplay);
+                }
+                else if((i == 1 && j == 1))//BUTTON ONE
+                {
+                    but1 = new JButton();
+                    frame.add(but1);
+                    screen[i][j] = but1;
+                }
+                else if((i == 3 && j == 1))//BUTTON TWO
+                {
+                    but2 = new JButton();
+                    frame.add(but2);
+                    screen[i][j] = but2;
+                }
+                else if((i == 5 && j == 1))//BUTTON THREE
+                {
+                    but3 = new JButton();
+                    frame.add(but3);
+                    screen[i][j] = but3;
+                }
+                else if((i == 7 && j == 1))//BUTTON FOUR
+                {
+                    but4 = new JButton();
+                    frame.add(but4);
+                    screen[i][j] = but4;
+                }
+                else if(i == 2 && j == 4)//GATE ONE
+                {
+                    gate1 = new JLabel();
+                    frame.add(gate1);
+                }
+                else if(i == 6 && j == 4)//GATE TWO
+                {
+                    gate2 = new JLabel();
+                    frame.add(gate2);
+                }
+                else if(i == 4 && j == 6)
+                {
+                    gate3 = new JLabel();
+                    frame.add(gate3);
+                }
+                else
+                {
+                    frame.add(label);
+                    screen[i][j] = label;
+                }
+            }
+        }
+        
+                
+         //ACTION LISTENER FOR BUTTONS
+        ActionListener buttonListener = new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                if(ae.getSource() == but1)
+                {
+                    butLogic1 = !butLogic1;
+                }
+                else if(ae.getSource() == but2)
+                {
+                    butLogic2 = !butLogic2;
+                }
+                else if(ae.getSource() ==  but3)
+                {
+                    butLogic3 = !butLogic3;
+                }
+                else if(ae.getSource() == but4)
+                {
+                    butLogic4 = !butLogic4;
+                }
+                
+                updatePowers();
+            }
+        };
+        //ADD BUTTONS TO LISTENER
+        but1.addActionListener(buttonListener);
+        but2.addActionListener(buttonListener);
+        but3.addActionListener(buttonListener);
+        but4.addActionListener(buttonListener);
+        
+        updatePowers();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    
+    public static void updatePowers()
+    {
+        //BACKGROUND COLORS
+        if(!butLogic1)
+        {
+            but1.setBackground(Color.red);
+        }
+        else
+        {
+            but1.setBackground(Color.green);
+        }
+        if(!butLogic2)
+        {
+            but2.setBackground(Color.red);
+        }
+        else
+        {
+            but2.setBackground(Color.green);
+        }
+        if(!butLogic3)
+        {
+            but3.setBackground(Color.red);
+        }
+        else
+        {
+            but3.setBackground(Color.green);
+        }
+        if(!butLogic4)
+        {
+            but4.setBackground(Color.red);
+        }
+        else
+        {
+            but4.setBackground(Color.green);
+        }
+        
+        //GATE LOGIC
+            //Gate 1
+            if(gateType1 == 0)//AND GATE
+            {
+                if(butLogic1 && butLogic2)
+                {
+                   gateLogic1 = true;
+                }
+                else
+                {
+                    gateLogic1 = false;
+                }
+            }
+            else if(gateType1 == 1)//OR GATE
+            {
+                if(butLogic1 || butLogic2)
+                {
+                    gateLogic1 = true;
+                }
+                else
+                {
+                    gateLogic1 = false;
+                }
+            }
+            else if(gateType1 == 2)//NAND GATE
+            {
+                if(!butLogic1 || !butLogic2)
+                {
+                  gateLogic1 = true;
+                }
+                else
+                {
+                    gateLogic1 = false;
+                }
+            }
+            else if(gateType1 == 3)//NOR GATE
+            {
+                if(!butLogic1 && !butLogic2)
+                {
+                    gateLogic1 = true;
+                }
+                else
+                {
+                    gateLogic1 = false;
+                }
+            }
+            else if(gateType1 == 4)//XOR GATE
+            {
+                if(butLogic1 != butLogic2)
+                {
+                    gateLogic1 = true; 
+                }
+                else
+                {
+                    gateLogic1 = false;
+                }
+            }
+            else//INCORRECT INPUT
+            {
+                System.out.println("you've messed up horribly: nice job");
+                gateLogic1 = false;
+            }
+            
+            //Gate 2
+            if(gateType2 == 0)//AND GATE
+            {
+                if(butLogic3 && butLogic4)
+                {
+                   gateLogic2 = true;
+                }
+                else
+                {
+                    gateLogic2 = false;
+                }
+            }
+            else if(gateType2 == 1)//OR GATE
+            {
+                if(butLogic3 || butLogic4)
+                {
+                    gateLogic2 = true;
+                }
+                else
+                {
+                    gateLogic2 = false;
+                }
+            }
+            else if(gateType2 == 2)//NAND GATE
+            {
+                if(!butLogic3 || !butLogic4)
+                {
+                  gateLogic2 = true;
+                }
+                else
+                {
+                    gateLogic2 = false;
+                }
+            }
+            else if(gateType2 == 3)//NOR GATE
+            {
+                if(!butLogic3 && !butLogic4)
+                {
+                    gateLogic2 = true;
+                }
+                else
+                {
+                    gateLogic2 = false;
+                }
+            }
+            else if(gateType2 == 4)//XOR GATE
+            {
+                if(butLogic3 != butLogic4)
+                {
+                    gateLogic2 = true; 
+                }
+                else
+                {
+                    gateLogic2 = false;
+                }
+            }
+            else//INCORRECT INPUT
+            {
+                System.out.println("you've messed up horribly: nice job");
+                gateLogic1 = false;
+            }
+            
+            //Gate3
+            if(gateType3 == 0)//AND GATE
+            {
+                if(gateLogic1 && gateLogic2)
+                {
+                   gateLogic3 = true;
+                }
+                else
+                {
+                    gateLogic3 = false;
+                }
+            }
+            else if(gateType3 == 1)//OR GATE
+            {
+                if(gateLogic1 || gateLogic2)
+                {
+                    gateLogic3 = true;
+                }
+                else
+                {
+                    gateLogic3 = false;
+                }
+            }
+            else if(gateType3 == 2)//NAND GATE
+            {
+                if(!gateLogic1 || !gateLogic2)
+                {
+                  gateLogic3 = true;
+                }
+                else
+                {
+                    gateLogic3 = false;
+                }
+            }
+            else if(gateType3 == 3)//NOR GATE
+            {
+                if(!gateLogic1 && !gateLogic2)
+                {
+                    gateLogic3 = true;
+                }
+                else
+                {
+                    gateLogic3 = false;
+                }
+            }
+            else if(gateType3 == 4)//XOR GATE
+            {
+                if(gateLogic1 != gateLogic2)
+                {
+                    gateLogic3 = true; 
+                }
+                else
+                {
+                    gateLogic3 = false;
+                }
+            }
+            else//INCORRECT INPUT
+            {
+                System.out.println("you've messed up horribly: nice job");
+                gateLogic1 = false;
+            }
+        
+        //GATE INTERFACE
+        if(gateLogic1)
+        {
+            gate1.setText("on");
+        }
+        else
+        {
+            gate1.setText("off");
+        }
+        if(gateLogic2)
+        {
+            gate2.setText("on");
+        }
+        else
+        {
+            gate2.setText("off");
+        }
+        if(gateLogic3)
+        {
+            gate3.setText("on");
+            switchLevels();
+        }
+        else
+        {
+            gate3.setText("off");
+        }
+    }
+    
+    public static void switchLevels()
+    {
+        levelCount++;
+        
+        //SET GATES
+        if(levelCount == 2)
+        {
+            
+        }
+        else if(levelCount == 3)
+        {
+            
+        }
+        else if(levelCount == 4)
+        {
+            
+        }
+        else if(levelCount == 5)
+        {
+            
+        }
+        else if(levelCount == 6)
+        {
+            
+        }
+        else if(levelCount == 7)
+        {
+            
+        }
+        else if(levelCount == 8)
+        {
+            
+        }
+        else if(levelCount == 9)
+        {
+            
+        }
+        else if(levelCount == 10)
+        {
+            
+        }
+        else
+        {
+            //gameover
+            System.out.println("yay");
+        }
+        
+        //SET BUTTONS
+        butLogic1 = false;
+        butLogic2 = false;
+        butLogic3 = false;
+        butLogic4 = false;
+        updatePowers();
+        levelDisplay.setText("Level: " + levelCount);
     }
 }
