@@ -1,6 +1,5 @@
 package projectforjava;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -120,7 +119,7 @@ public class ProjectForJavaRunner
         {
             for (int j = 0; j < gameCols; j++)
             {
-                JLabel label = new JLabel(i + "," + j);
+                JLabel label = new JLabel();
                 label.setPreferredSize(new Dimension(50, 50));
                 if(i == 0 && j == 0)//LEVEL DISPLAY
                 {
@@ -146,11 +145,25 @@ public class ProjectForJavaRunner
                     frame.add(but2);
                     screen[i][j] = but2;
                 }
+                else if(i == 3 && j == 2)//NOT TEXT TWO
+                {
+                    not2 = new JLabel();
+                    not2.setText(i + ", " + j);
+                    frame.add(not2);
+                    screen[i][j] = not2;
+                }
                 else if((i == 5 && j == 1))//BUTTON THREE
                 {
                     but3 = new JButton();
                     frame.add(but3);
                     screen[i][j] = but3;
+                }
+                else if(i == 5 && j == 2)//NOT TEXT THREE
+                {
+                    not3 = new JLabel();
+                    not3.setText(i + ", " + j);
+                    frame.add(not3);
+                    screen[i][j] = not3;
                 }
                 else if((i == 7 && j == 1))//BUTTON FOUR
                 {
@@ -158,24 +171,53 @@ public class ProjectForJavaRunner
                     frame.add(but4);
                     screen[i][j] = but4;
                 }
+                else if(i == 7 && j == 2)//NOT TEXT FOUR
+                {
+                    not4 = new JLabel();
+                    not4.setText(i + ", " + j);
+                    frame.add(not4);
+                    screen[i][j] = not4;
+                }
                 
                 else if(i == 2 && j == 4)//GATE ONE
                 {
                     gate1 = new JLabel();
                     frame.add(gate1);
                 }
+                else if(i == 2 && j == 5)//NOT TEXT FIVE; GATE ONE
+                {
+                    not5 = new JLabel();
+                    not5.setText(i + ", " + j);
+                    frame.add(not5);
+                    screen[i][j] = not5;
+                }
                 else if(i == 6 && j == 4)//GATE TWO
                 {
                     gate2 = new JLabel();
                     frame.add(gate2);
                 }
-                else if(i == 4 && j == 6)
+                else if(i == 6 && j == 5)//NOT TEXT SIX; GATE TWO
+                {
+                    not6 = new JLabel();
+                    not6.setText(i + ", " + j);
+                    frame.add(not6);
+                    screen[i][j] = not6;
+                }
+                else if(i == 4 && j == 6)//GATE THREE
                 {
                     gate3 = new JLabel();
                     frame.add(gate3);
                 }
+                else if(i == 4 && j == 7)//NOT TEXT SIX; GATE TWO
+                {
+                    not7 = new JLabel();
+                    not7.setText(i + ", " + j);
+                    frame.add(not7);
+                    screen[i][j] = not7;
+                }
                 else
                 {
+                    //label.setText(i + "," + j);
                     frame.add(label);
                     screen[i][j] = label;
                 }
@@ -232,6 +274,55 @@ public class ProjectForJavaRunner
         {
             not1.setText("1, 2");
         }
+        if(notLogic2)
+        {
+            not2.setText("NOT!:" + !butLogic2);
+        }
+        else
+        {
+            not2.setText("3, 2");
+        }
+        if(notLogic3)
+        {
+            not3.setText("NOT!:" + !butLogic3);
+        }
+        else
+        {
+            not3.setText("5, 2");
+        }
+        if(notLogic4)
+        {
+            not4.setText("NOT!:" + !butLogic4);
+        }
+        else
+        {
+            not4.setText("7, 2");
+        }
+        if(notLogic5)
+        {
+            not5.setText("NOT!:" + !gateLogic1);
+        }
+        else
+        {
+            not5.setText("7, 2");
+        }
+        if(notLogic6)
+        {
+            not6.setText("NOT!:" + !gateLogic2);
+        }
+        else
+        {
+            not6.setText("7, 2");
+        }
+        if(notLogic7)
+        {
+            not7.setText("NOT!:" + !gateLogic3);
+        }
+        else
+        {
+            not7.setText("7, 2");
+        }
+        /**/
         
         //BACKGROUND COLORS
         if(!butLogic1)
@@ -481,7 +572,15 @@ public class ProjectForJavaRunner
     public static Object switchLevels(Object[][] screen)
     {
         levelCount++;
-        resetNots();
+        //SET NOTS
+        notLogic1 = false;
+        notLogic2 = false;
+        notLogic3 = false;
+        notLogic4 = false;
+        notLogic5 = false;
+        notLogic6 = false;
+        notLogic7 = false;
+        
         //SET BUTTONS
         butLogic1 = false;
         butLogic2 = false;
@@ -489,61 +588,87 @@ public class ProjectForJavaRunner
         butLogic4 = false;
         
         //SET GATES
-        if(levelCount == 2)//ANDS AND NOTS
+        //If the count says 0 the level is set up for gameplay
+        //Level count 2 is the current level being worked on
+        //Levels are in order starting at 2
+        if(levelCount == 0)//ANDS AND NOTS; Level 2
         {
-            //notLogic1 = true;
+            notLogic1 = true;//NOT FOR BUTTON 1
             
-            gateType1 = 0;
-            gateType2 = 1;
-            gateType3 = 0;
+            gateType1 = 0;//AND
+            gateType2 = 0;//AND
+            gateType3 = 0;//AND
         }
-        else if(levelCount == 3)//START OR
+        else if(levelCount == 0)//START OR; Level 3
         {
-            gateType1 = 0;
-            gateType2 = 2;
-            gateType3 = 0;
+            gateType1 = 1;//OR
+            gateType2 = 1;//OR
+            gateType3 = 0;//AND
         }
-        else if(levelCount == 4)//ORS AND NOTS
+        else if(levelCount == 0)//ORS AND NOTS; Level 4
         {
-            gateType1 = 0;
-            gateType2 = 3;
-            gateType3 = 0;
+            notLogic2 = true;//NOT FOR BUTTON 2
+            notLogic3 = true;//NOT FOR BUTTON 3
+            
+            gateType1 = 1;//OR
+            gateType2 = 1;//OR
+            gateType3 = 0;//AND
         }
-        else if(levelCount == 5)//NAND LOGIC
+        else if(levelCount == 0)//NAND LOGIC; Level 5
         {
-            gateType1 = 0;
-            gateType2 = 4;
-            gateType3 = 0;
+            butLogic1 = true;
+            butLogic2 = true;
+            butLogic3 = true;
+            butLogic4 = true;
+            
+            gateType1 = 0;//AND
+            gateType2 = 1;//OR
+            gateType3 = 2;//NAND
         }
-        else if(levelCount == 6)//FINISH NAND
+        else if(levelCount == 2)//FINISH NAND; Level 6
+        {
+            butLogic1 = true;
+            butLogic2 = true;
+            butLogic3 = true;
+            butLogic4 = true;
+            
+            notLogic5 = true;
+            notLogic6 = true;
+            
+            gateType1 = 1;//NAND
+            gateType2 = 1;//OR
+            gateType3 = 1;//AND
+        }
+        else if(levelCount == 7)//START NOR; Level 7
         {
             gateType1 = 0;
             gateType2 = 0;
             gateType3 = 0;
         }
-        else if(levelCount == 7)//START NOR
+        else if(levelCount == 8)//FINISH NOR; Level 8
         {
             gateType1 = 0;
             gateType2 = 0;
             gateType3 = 0;
         }
-        else if(levelCount == 8)//FINISH NOR
+        else if(levelCount == 9)//START XOR; Level 9
         {
             gateType1 = 0;
             gateType2 = 0;
             gateType3 = 0;
         }
-        else if(levelCount == 9)//START XOR
+        else if(levelCount == 10)//FINISH XOR; Level 10
         {
             gateType1 = 0;
             gateType2 = 0;
             gateType3 = 0;
         }
-        else if(levelCount == 10)//FINISH XOR
+        else if(levelCount < 10)
         {
             gateType1 = 0;
             gateType2 = 0;
             gateType3 = 0;
+            System.out.println("temp level");
         }
         else//reset game
         {
@@ -560,17 +685,6 @@ public class ProjectForJavaRunner
         updatePowers();
         levelDisplay.setText("Level: " + levelCount);
         return screen;
-    }
-    
-    public static void resetNots()
-    {
-        notLogic1 = false;
-        notLogic2 = false;
-        notLogic3 = false;
-        notLogic4 = false;
-        notLogic5 = false;
-        notLogic6 = false;
-        notLogic7 = false;
     }
     
     public static String typeTo(int n)
