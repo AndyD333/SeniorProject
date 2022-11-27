@@ -613,19 +613,8 @@ public class ProjectForJavaRunner
         butLogic3 = false;
         butLogic4 = false;
         
-        //SET GATES
-        //If the count says 0 the level is set up for gameplay
-        //Level count 2 is the current level being worked on
-        //Levels are in order starting at 2
-        /*REAL LEVEL 2 COMMENTED OUT BELOW; CURRENTLY TESTING LEVEL 2 IS IN PLACE
-        if(levelCount == 2)//ANDS AND NOTS; Level 2
-        {
-            notLogic1 = true;//NOT FOR BUTTON 1
-            
-            gateType1 = 0;//AND
-            gateType2 = 0;//AND
-            gateType3 = 0;//AND
-        }*/      
+        //SET GATES, NOTS, AND BUTTONS
+        /*TEST LEVEL
         if(levelCount == 2)//SHOW OFF ALL NOTS LEVEL; not actually going in game
         {
             //butLogic1 = true;
@@ -641,6 +630,18 @@ public class ProjectForJavaRunner
             gateType2 = 0;//AND
             gateType3 = 0;//AND
         }
+        */
+        //Levels are in order starting at 2
+        
+        if(levelCount == 2)//ANDS AND NOTS; Level 2
+        {
+            notLogic1 = true;//NOT FOR BUTTON 1
+            
+            gateType1 = 0;//AND
+            gateType2 = 0;//AND
+            gateType3 = 0;//AND
+        }      
+        
         else if(levelCount == 3)//START OR; Level 3
         {
             gateType1 = 1;//OR
@@ -649,8 +650,10 @@ public class ProjectForJavaRunner
         }
         else if(levelCount == 4)//ORS AND NOTS; Level 4
         {
+            butLogic2 = true;
             notLogic2 = true;//NOT FOR BUTTON 2
             notLogic3 = true;//NOT FOR BUTTON 3
+            butLogic3 = true;
             
             gateType1 = 1;//OR
             gateType2 = 1;//OR
@@ -664,18 +667,16 @@ public class ProjectForJavaRunner
             butLogic4 = true;
             
             gateType1 = 0;//AND
-            gateType2 = 0;//AND
+            gateType2 = 1;//OR
             gateType3 = 2;//NAND
         }
         else if(levelCount == 6)//FINISH NAND; Level 6
         {
             butLogic1 = true;
             butLogic2 = true;
-            butLogic3 = true;
-            butLogic4 = true;
             
             gateType1 = 2;//NAND
-            gateType2 = 2;//NAND
+            gateType2 = 1;//OR
             gateType3 = 0;//AND
         }
         else if(levelCount == 7)//START NOR; Level 7
