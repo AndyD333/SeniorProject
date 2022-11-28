@@ -1,5 +1,6 @@
 package projectforjava;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -12,7 +13,6 @@ public class ProjectForJavaRunner
     private static JFrame frame;
     private static int gameHeight;
     private static int gameWidth;
-    private static Object[][] screen;
     private static int gameRows;
     private static int gameCols;
     private static int boxHeight;
@@ -36,6 +36,20 @@ public class ProjectForJavaRunner
     private static boolean notLogic5;
     private static boolean notLogic6;
     private static boolean notLogic7;
+    
+    //IMAGEICONS
+    private static ImageIcon andGate;
+    private static ImageIcon orGate;
+    private static ImageIcon nandGate;
+    private static ImageIcon norGate;
+    private static ImageIcon xorGate;
+    private static ImageIcon pressedButton;
+    private static ImageIcon unpressedButton;
+    private static ImageIcon onLight;
+    private static ImageIcon offLight;
+    private static ImageIcon topWire;
+    private static ImageIcon bottomWire;
+    private static ImageIcon notGate;
     
     
     //BUTTON BOOLEANS
@@ -101,9 +115,29 @@ public class ProjectForJavaRunner
         boxWidth = 50;
         
         gameHeight = gameRows * boxHeight;
-        gameWidth = gameCols * boxWidth;      
+        gameWidth = gameCols * boxWidth;
         
-        Object screen[][] = new Object[gameRows][gameCols];
+        //IMAGE ICONS
+        try
+        {
+            andGate = new ImageIcon();
+            orGate = new ImageIcon();
+            nandGate = new ImageIcon();
+            norGate = new ImageIcon();
+            xorGate = new ImageIcon();
+            notGate = new ImageIcon();
+            pressedButton = new ImageIcon();
+            unpressedButton = new ImageIcon( );//"C:\\Users\\Chip\\OneDrive\\Desktop\\button.jpg"
+            onLight = new ImageIcon();
+            offLight = new ImageIcon();
+            topWire = new ImageIcon();
+            bottomWire = new ImageIcon();
+        }
+        catch(Exception e)
+        {
+            System.out.println("fart");
+        }
+        
 
         frame.setSize(new Dimension(700, 700));
         frame.setLayout(new GridLayout(gameRows, gameCols));
@@ -132,53 +166,41 @@ public class ProjectForJavaRunner
                 {
                     but1 = new JButton();
                     frame.add(but1);
-                    screen[i][j] = but1;
                 }
                 else if(i == 1 && j == 2)//NOT TEXT ONE
                 {
                     not1 = new JLabel();
-                    not1.setText(i + ", " + j);
                     frame.add(not1);
-                    screen[i][j] = not1;
                 }
                 else if((i == 3 && j == 1))//BUTTON TWO
                 {
                     but2 = new JButton();
                     frame.add(but2);
-                    screen[i][j] = but2;
                 }
                 else if(i == 3 && j == 2)//NOT TEXT TWO
                 {
                     not2 = new JLabel();
-                    not2.setText(i + ", " + j);
                     frame.add(not2);
-                    screen[i][j] = not2;
                 }
                 else if((i == 5 && j == 1))//BUTTON THREE
                 {
                     but3 = new JButton();
                     frame.add(but3);
-                    screen[i][j] = but3;
                 }
                 else if(i == 5 && j == 2)//NOT TEXT THREE
                 {
                     not3 = new JLabel();
-                    not3.setText(i + ", " + j);
                     frame.add(not3);
-                    screen[i][j] = not3;
                 }
                 else if((i == 7 && j == 1))//BUTTON FOUR
                 {
                     but4 = new JButton();
                     frame.add(but4);
-                    screen[i][j] = but4;
                 }
                 else if(i == 7 && j == 2)//NOT TEXT FOUR
                 {
                     not4 = new JLabel();
-                    not4.setText(i + ", " + j);
                     frame.add(not4);
-                    screen[i][j] = not4;
                 }
                 
                 else if(i == 2 && j == 4)//GATE ONE
@@ -189,9 +211,7 @@ public class ProjectForJavaRunner
                 else if(i == 2 && j == 5)//NOT TEXT FIVE; GATE ONE
                 {
                     not5 = new JLabel();
-                    not5.setText(i + ", " + j);
                     frame.add(not5);
-                    screen[i][j] = not5;
                 }
                 else if(i == 6 && j == 4)//GATE TWO
                 {
@@ -201,9 +221,7 @@ public class ProjectForJavaRunner
                 else if(i == 6 && j == 5)//NOT TEXT SIX; GATE TWO
                 {
                     not6 = new JLabel();
-                    not6.setText(i + ", " + j);
                     frame.add(not6);
-                    screen[i][j] = not6;
                 }
                 else if(i == 4 && j == 7)//GATE THREE
                 {
@@ -213,9 +231,7 @@ public class ProjectForJavaRunner
                 else if(i == 4 && j == 8)//NOT TEXT SIX; GATE TWO
                 {
                     not7 = new JLabel();
-                    not7.setText(i + ", " + j);
                     frame.add(not7);
-                    screen[i][j] = not7;
                 }
                 else if(i == 4 && j == 10)
                 {
@@ -224,9 +240,8 @@ public class ProjectForJavaRunner
                 }
                 else
                 {
-                    label.setText(i + "," + j);
+                    //label.setText(i + "," + j);
                     frame.add(label);
-                    screen[i][j] = label;
                 }
             }
         }
@@ -259,7 +274,7 @@ public class ProjectForJavaRunner
                     if(lightLogic)
                     {
                         System.out.println("ready for next level");
-                        switchLevels(screen);
+                        switchLevels();
                     }
                     else
                     {
@@ -292,7 +307,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not1.setText("1, 2");
+            not1.setText("");
         }
         if(notLogic2)
         {
@@ -300,7 +315,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not2.setText("3, 2");
+            not2.setText("");
         }
         if(notLogic3)
         {
@@ -308,7 +323,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not3.setText("5, 2");
+            not3.setText("");
         }
         if(notLogic4)
         {
@@ -316,7 +331,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not4.setText("7, 2");
+            not4.setText("");
         }
         if(notLogic5)
         {
@@ -324,7 +339,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not5.setText("2, 5");
+            not5.setText("");
         }
         if(notLogic6)
         {
@@ -332,7 +347,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not6.setText("6, 5");
+            not6.setText("");
         }
         if(notLogic7)
         {
@@ -340,7 +355,7 @@ public class ProjectForJavaRunner
         }
         else
         {
-            not7.setText("4, 8");
+            not7.setText("");
         }
         /**/
         
@@ -348,9 +363,11 @@ public class ProjectForJavaRunner
         if(!butLogic1)
         {
             but1.setBackground(Color.red);
+            but1.setIcon(unpressedButton);
         }
         else
         {
+            but1.setIcon(null);
             but1.setBackground(Color.green);
         }
         if(!butLogic2)
@@ -595,7 +612,7 @@ public class ProjectForJavaRunner
         }
     }
     
-    public static Object switchLevels(Object[][] screen)
+    public static void switchLevels()
     {
         levelCount++;
         //SET NOTS
@@ -737,7 +754,6 @@ public class ProjectForJavaRunner
         
         updatePowers();
         levelDisplay.setText("Level: " + levelCount);
-        return screen;
     }
     
     public static String typeTo(int n)
