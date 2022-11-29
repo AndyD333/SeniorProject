@@ -1,0 +1,90 @@
+body {
+    font-family: "Lucida Console";
+}
+
+.title-container {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(112, 0, 181);
+    border-bottom-style: solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#example-topleft{
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    z-index: -1;
+    padding: 10px;
+}
+
+#title {
+    font-size: 60px;
+    color: rgb(112, 0, 181);
+}
+
+#favcolbutton {
+    background-color: #1017e0;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    left: 1px;
+    top: 6px;
+    z-index: -1;
+    height: 140px;
+    width: 140px;
+    padding: 10px 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a{
+    position: absolute;
+    display: block;
+    z-index: 1;
+    height: 140px;
+    width: 140px;
+    left: 0px;
+    top: 0px;
+}
+
+.favcolbutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+#nameInput{
+    background-color: #00ff00;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    width: 140px;
+    z-index: 2;
+    left: 20px;
+    top: 25px
+}
+
+
+.game {
+    background-color: forestgreen;
+    margin: auto;
+    margin-top: 30px;
+    z-index: -1;
+    width: 90%;
+    height: 705px;
+    border-style: solid;
+    border-color: rgb(112, 0, 181);
+    border-width: 5px;
+    padding: 10px;
+}
+
+#cheerpj {
+    z-index: 2;
+    object-position:center;
+}
