@@ -50,7 +50,9 @@ public class ProjectForJavaRunner
     private static ImageIcon topWire;
     private static ImageIcon bottomWire;
     private static ImageIcon notGate;
-    
+    private static ImageIcon straightWire;
+    private static ImageIcon verticalWire;
+    private static ImageIcon connectingWire;
     
     //BUTTON BOOLEANS
     //THE CUSTOM OBJECTS AREN'T WORKING, WITH JPANELS SO INSTEAD EVERYTHING WILL
@@ -77,6 +79,22 @@ public class ProjectForJavaRunner
     private static JLabel gate3;
     private static JLabel levelDisplay;
     private static JButton lightBut;
+    
+    //WIRE PANELS
+    private static JLabel oneThree;
+    private static JLabel twoThree;
+    private static JLabel threeThree;
+    private static JLabel fiveThree;
+    private static JLabel sixThree;
+    private static JLabel sevenThree;
+    
+    private static JLabel twoSix;
+    private static JLabel threeSix;
+    private static JLabel fourSix;
+    private static JLabel fiveSix;
+    private static JLabel sixSix;
+    
+    private static JLabel fourNine;
     
     
     public static void main(String[] args)
@@ -238,11 +256,93 @@ public class ProjectForJavaRunner
                     lightBut = new JButton();
                     frame.add(lightBut);
                 }
+                
+                
+                else if(i == 1 && j == 3)//TOP WIRE
+                {
+                    JLabel oneThree = new JLabel("1,3");
+                    oneThree.setIcon(topWire);
+                    frame.add(oneThree);
+                }
+                else if(i == 2 && j == 3)//CONNECTING WIRE
+                {
+                    JLabel twoThree = new JLabel("2,3");
+                    twoThree.setIcon(connectingWire);
+                    frame.add(twoThree);
+                }
+                else if(i == 3 && j == 3)//BOTTOM WIRE
+                {
+                    JLabel threeThree = new JLabel("3,3");
+                    threeThree.setIcon(topWire);
+                    frame.add(threeThree);
+                }
+                
+                
+                else if(i == 5 && j == 3)//TOP WIRE
+                {
+                    JLabel fiveThree = new JLabel("5,3");
+                    fiveThree.setIcon(topWire);
+                    frame.add(fiveThree);
+                }
+                else if(i == 6 && j == 3)//CONNECTING WIRE
+                {
+                    JLabel sixThree = new JLabel("6,3");
+                    sixThree.setIcon(topWire);
+                    frame.add(sixThree);
+                }
+                else if(i == 7 && j == 3)//BOTTOM WIRE
+                {
+                    JLabel sevenThree = new JLabel("6,3");
+                    sevenThree.setIcon(topWire);
+                    frame.add(sevenThree);
+                }
+                
+                
+                else if(i == 2 && j == 6)//TOP WIRE
+                {
+                    JLabel twoSix = new JLabel("2,6");
+                    twoSix.setIcon(topWire);
+                    frame.add(twoSix);
+                }
+                else if(i == 3 && j == 6)//VERTICAL WIRE(FLIP UPSIDE DOWN)
+                {
+                    JLabel threeSix = new JLabel("3,6");
+                    threeSix.setIcon(topWire);
+                    frame.add(threeSix);
+                }
+                else if(i == 4 && j == 6)//CONNECTING WIRE
+                {
+                    JLabel fourSix = new JLabel("4,6");
+                    fourSix.setIcon(topWire);
+                    frame.add(fourSix);
+                }
+                else if(i == 5 && j == 6)//VERTICAL WIRE
+                {
+                    JLabel fiveSix = new JLabel("5,6");
+                    fiveSix.setIcon(topWire);
+                    frame.add(fiveSix);
+                }
+                else if(i == 6 && j == 6)//BOTTOM WIRE
+                {
+                    JLabel sixSix = new JLabel("6,6");
+                    sixSix.setIcon(topWire);
+                    frame.add(sixSix);
+                }
+                
+                else if(i == 4 && j == 9)//STRAIGHT WIRE
+                {
+                    JLabel fourNine = new JLabel("4,9");
+                    fourNine.setIcon(topWire);
+                    frame.add(fourNine);
+                }/**/
+                
+                
                 else
                 {
-                    //label.setText(i + "," + j);
+                    //label.setText(i + ", " + j);
                     frame.add(label);
                 }
+
             }
         }
         
@@ -304,58 +404,72 @@ public class ProjectForJavaRunner
         if(notLogic1)
         {
             not1.setText("NOT!:" + !butLogic1);
+            not1.setIcon(notGate);
         }
         else
         {
             not1.setText("");
+            not1.setIcon(straightWire);
         }
         if(notLogic2)
         {
             not2.setText("NOT!:" + !butLogic2);
+            not2.setIcon(notGate);
         }
         else
         {
             not2.setText("");
+            not2.setIcon(straightWire);
         }
         if(notLogic3)
         {
             not3.setText("NOT!:" + !butLogic3);
+            not3.setIcon(notGate);
         }
         else
         {
             not3.setText("");
+            not3.setIcon(straightWire);
         }
         if(notLogic4)
         {
             not4.setText("NOT!:" + !butLogic4);
+            not4.setIcon(notGate);
         }
         else
         {
             not4.setText("");
+            not4.setIcon(straightWire);
         }
         if(notLogic5)
         {
             not5.setText("NOT!:" + !gateLogic1);
+            not5.setIcon(notGate);
         }
         else
         {
             not5.setText("");
+            not5.setIcon(straightWire);
         }
         if(notLogic6)
         {
             not6.setText("NOT!:" + !gateLogic2);
+            not6.setIcon(notGate);
         }
         else
         {
             not6.setText("");
+            not6.setIcon(straightWire);
         }
         if(notLogic7)
         {
             not7.setText("NOT!:" + !gateLogic3);
+            not7.setIcon(notGate);
         }
         else
         {
             not7.setText("");
+            not7.setIcon(straightWire);
         }
         /**/
         
@@ -367,32 +481,38 @@ public class ProjectForJavaRunner
         }
         else
         {
-            but1.setIcon(null);
             but1.setBackground(Color.green);
+            but1.setIcon(pressedButton);
         }
         if(!butLogic2)
         {
             but2.setBackground(Color.red);
+            but2.setIcon(unpressedButton);
         }
         else
         {
             but2.setBackground(Color.green);
+            but2.setIcon(pressedButton);
         }
         if(!butLogic3)
         {
             but3.setBackground(Color.red);
+            but3.setIcon(unpressedButton);
         }
         else
         {
             but3.setBackground(Color.green);
+            but3.setIcon(pressedButton);
         }
         if(!butLogic4)
         {
             but4.setBackground(Color.red);
+            but4.setIcon(unpressedButton);
         }
         else
         {
             but4.setBackground(Color.green);
+            but4.setIcon(pressedButton);
         }
         
         
@@ -604,11 +724,13 @@ public class ProjectForJavaRunner
         {
             lightLogic = true;
             lightBut.setBackground(Color.green);
+            lightBut.setIcon(onLight);
         }
         else
         {
             lightLogic = false;
             lightBut.setBackground(Color.red);
+            lightBut.setIcon(offLight);
         }
     }
     
