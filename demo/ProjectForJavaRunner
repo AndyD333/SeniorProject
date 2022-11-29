@@ -1,6 +1,5 @@
 package projectforjava;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -145,7 +144,7 @@ public class ProjectForJavaRunner
             xorGate = new ImageIcon();
             notGate = new ImageIcon();
             pressedButton = new ImageIcon();
-            unpressedButton = new ImageIcon( );//"C:\\Users\\Chip\\OneDrive\\Desktop\\button.jpg"
+            unpressedButton = new ImageIcon("gate.png");//"C:\\Users\\Chip\\OneDrive\\Desktop\\button.jpg"
             onLight = new ImageIcon();
             offLight = new ImageIcon();
             topWire = new ImageIcon();
@@ -153,7 +152,7 @@ public class ProjectForJavaRunner
         }
         catch(Exception e)
         {
-            System.out.println("fart");
+            System.out.println("image error");
         }
         
 
@@ -710,14 +709,20 @@ public class ProjectForJavaRunner
         String a = typeTo(gateType1);
         String b = powerTest(gateLogic1);
         gate1.setText(a + ": " + b);
+        //ImageIcon c = typeToImage(gateType1);
+        //gate1.setIcon(c);
         
         a = typeTo(gateType2);
         b = powerTest(gateLogic2);
         gate2.setText(a + ": " + b);
+        //ImageIcon c = typeToImage(gateType2);
+        //gate2.setIcon(c);
         
         a = typeTo(gateType3);
         b = powerTest(gateLogic3);
         gate3.setText(a + ": " + b);
+        //ImageIcon c = typeToImage(gateType3);
+        //gate3.setIcon(c);
         
         //SWITCH LEVELS WHEN NECESSARY
         if(gateLogic3 != notLogic7)
@@ -876,6 +881,27 @@ public class ProjectForJavaRunner
         
         updatePowers();
         levelDisplay.setText("Level: " + levelCount);
+    }
+    
+    public static ImageIcon typeToImage(int n)
+    {
+        if(n == 1)
+        {
+            return orGate;
+        }
+        else if(n == 2)
+        {
+            return nandGate;
+        }
+        else if(n == 3)
+        {
+            return norGate;
+        }
+        else if(n == 4)
+        {
+            return xorGate;
+        }
+        return andGate;
     }
     
     public static String typeTo(int n)
